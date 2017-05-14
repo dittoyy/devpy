@@ -1,9 +1,26 @@
 {% extends "base.html" %}
+
 {% block content %}
     {% for blog in blogs %} 
         <h2>{{ blog.title }}</h2>
         <p>{{ blog.timestamp }}</p> 
-        <!-- <i>dirtrrrrrrrrrrrrrrrrrr</i> -->
         <p>{{ blog.body }}</p> 
+    
+        
     {% endfor %}
+   <!--  <h3>Login form get</h2>
+        <form method='get' action='/login/'>
+            <input type="text" name="username" placeholder='username'>
+            <input type="password" name="password" placeholder='password'>
+            <button id='btn' type='submit'>login</button>
+            <br>{{error}}
+        </form> -->
+            <h3>Login form post</h2>
+        <form method='post' action='/login/'>
+            {% csrf_token %}
+            <input type="text" name="username" placeholder='username'>
+            <input type="password" name="password" placeholder='password'>
+            <button id='btn' type='submit'>login</button>
+            <br>{{error}}
+        </form>
 {% endblock %}
